@@ -5,20 +5,15 @@
 */
 
 @media print {
-  /* Page Setup for exact A4 paper size and 0mm margin */
-  @page {
-    size: A4 portrait;
-    margin: 0;
-  }
-
-  /* Force background colors and exact colors across all elements */
+  /* Force exact background colors and text colors across all elements */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    color-adjust: exact !important;
   }
 
-  /* Reset layout containers for print engine */
-  html, body, #root, .min-h-screen, main, div {
+  /* Reset body and outer containers without forcing display: block on children */
+  html, body, #root {
     background: #ffffff !important;
     color: #000000 !important;
     margin: 0 !important;
@@ -28,23 +23,19 @@
     min-height: 0 !important;
     max-height: none !important;
     overflow: visible !important;
-    position: static !important;
-    display: block !important;
-    transform: none !important;
-    float: none !important;
   }
 
   /* Hide screen-only controls, headers, drawers, sidebars, modals */
-  .no-print, header, aside, button, modal {
+  .no-print, header, aside, modal, nav {
     display: none !important;
   }
 
+  /* Reset zoom wrapper for print engine */
   .sheet-zoom-wrapper {
     transform: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    width: 210mm !important;
-    display: block !important;
+    width: 100% !important;
   }
 
   /* Print container resets */
@@ -52,26 +43,23 @@
     padding: 0 !important;
     margin: 0 auto !important;
     background: #ffffff !important;
-    width: 210mm !important;
-    overflow: visible !important;
-    display: block !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 
   .print-sheet {
     box-shadow: none !important;
     border: none !important;
     margin: 0 auto !important;
-    width: 210mm !important;
-    min-height: 297mm !important;
     padding: 8mm !important;
     border-radius: 0 !important;
     background: #ffffff !important;
-    display: block !important;
     page-break-after: avoid !important;
     page-break-inside: avoid !important;
   }
 
-  /* Prevent keycaps from breaking across pages */
+  /* Prevent individual keycaps from breaking across page breaks */
   [title*="Tecla:"] {
     break-inside: avoid !important;
     page-break-inside: avoid !important;

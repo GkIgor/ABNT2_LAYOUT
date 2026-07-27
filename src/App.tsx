@@ -26,6 +26,7 @@ export default function App() {
     showCropMarks: true,
     cropMarkStyle: 'solid',
     showRuler: true,
+    orientation: 'portrait',
     selectedKeyIds: allKeys.map(k => k.id), // select all by default
     customKeyNotes: {},
     duplicateCounts: {},

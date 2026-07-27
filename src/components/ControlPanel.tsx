@@ -94,10 +94,10 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
           Modo de Exibição / Layout
         </label>
         
-        <div className="grid grid-cols-3 gap-1 bg-gray-100/80 dark:bg-gray-800/80 p-1 rounded-xl">
+        <div className="grid grid-cols-2 gap-1.5 bg-gray-100/80 dark:bg-gray-800/80 p-1.5 rounded-xl">
           <button
             onClick={() => onChangePrintMode('full-layout')}
-            className={`py-2 px-1 text-[11px] font-bold rounded-lg transition-all text-center leading-tight cursor-pointer ${
+            className={`py-2 px-2 text-[11px] font-bold rounded-lg transition-all text-center leading-tight cursor-pointer ${
               printMode === 'full-layout'
                 ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-xs ring-1 ring-black/5 dark:ring-white/10'
                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
@@ -108,7 +108,7 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
 
           <button
             onClick={() => onChangePrintMode('grid-sheet')}
-            className={`py-2 px-1 text-[11px] font-bold rounded-lg transition-all text-center leading-tight cursor-pointer ${
+            className={`py-2 px-2 text-[11px] font-bold rounded-lg transition-all text-center leading-tight cursor-pointer ${
               printMode === 'grid-sheet'
                 ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-xs ring-1 ring-black/5 dark:ring-white/10'
                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
@@ -119,13 +119,69 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
 
           <button
             onClick={() => onChangePrintMode('selected-only')}
-            className={`py-2 px-1 text-[11px] font-bold rounded-lg transition-all text-center leading-tight cursor-pointer ${
+            className={`py-2 px-2 text-[11px] font-bold rounded-lg transition-all text-center leading-tight cursor-pointer ${
               printMode === 'selected-only'
                 ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-xs ring-1 ring-black/5 dark:ring-white/10'
                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
             }`}
           >
             Apenas Selecionadas
+          </button>
+
+          <button
+            onClick={() => onChangePrintMode('test-sheet')}
+            className={`py-2 px-2 text-[11px] font-bold rounded-lg transition-all text-center leading-tight cursor-pointer flex items-center justify-center gap-1 ${
+              printMode === 'test-sheet'
+                ? 'bg-blue-600 text-white shadow-xs'
+                : 'text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40'
+            }`}
+          >
+            <Sparkles className="w-3 h-3 shrink-0" />
+            Folha de Teste
+          </button>
+        </div>
+      </div>
+
+      {/* Orientation Selector Bento Card */}
+      <div className="bg-white dark:bg-gray-900 border border-gray-200/80 dark:border-gray-800 rounded-2xl p-4 shadow-2xs space-y-3">
+        <label className="text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider flex items-center gap-2">
+          <span className="p-1.5 bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rounded-lg">
+            <Sliders className="w-3.5 h-3.5" />
+          </span>
+          Orientação da Folha A4
+        </label>
+
+        <div className="grid grid-cols-2 gap-1.5 bg-gray-100/80 dark:bg-gray-800/80 p-1.5 rounded-xl">
+          <button
+            onClick={() =>
+              onChangeCustomization({
+                ...customization,
+                orientation: 'portrait',
+              })
+            }
+            className={`py-2 px-2 text-[11px] font-bold rounded-lg transition-all text-center cursor-pointer ${
+              customization.orientation === 'portrait' || !customization.orientation
+                ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-xs ring-1 ring-black/5 dark:ring-white/10'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+            }`}
+          >
+            Retrato (210x297mm)
+          </button>
+
+          <button
+            onClick={() =>
+              onChangeCustomization({
+                ...customization,
+                orientation: 'landscape',
+              })
+            }
+            className={`py-2 px-2 text-[11px] font-bold rounded-lg transition-all text-center cursor-pointer ${
+              customization.orientation === 'landscape'
+                ? 'bg-white dark:bg-gray-900 text-blue-600 dark:text-blue-400 shadow-xs ring-1 ring-black/5 dark:ring-white/10'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+            }`}
+          >
+            Paisagem (297x210mm)
           </button>
         </div>
       </div>

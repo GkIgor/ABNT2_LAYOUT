@@ -38,7 +38,8 @@ export interface ColorTheme {
   isDark: boolean;
 }
 
-export type PrintMode = 'full-layout' | 'grid-sheet' | 'selected-only';
+export type PrintMode = 'full-layout' | 'grid-sheet' | 'selected-only' | 'test-sheet';
+export type PageOrientation = 'portrait' | 'landscape';
 
 export interface KeyCapCustomization {
   baseWidthMm: number;
@@ -54,6 +55,7 @@ export interface KeyCapCustomization {
   showCropMarks: boolean;
   cropMarkStyle: 'dashed' | 'solid' | 'corners' | 'none';
   showRuler: boolean;
+  orientation: PageOrientation;
   selectedKeyIds: string[]; // for 'selected-only' mode
   customKeyNotes: Record<string, Partial<KeyData>>;
   duplicateCounts: Record<string, number>;
