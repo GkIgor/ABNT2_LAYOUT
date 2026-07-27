@@ -1,5 +1,5 @@
 import React from 'react';
-import { Keyboard, Printer, FileText, RotateCcw, Sparkles } from 'lucide-react';
+import { Keyboard, Printer, FileText, RotateCcw, Github } from 'lucide-react';
 
 interface HeaderProps {
   onPrint: () => void;
@@ -35,6 +35,17 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Top Action Controls */}
       <div className="flex items-center gap-2">
+        <a
+          href="https://github.com/GkIgor/ABNT2_LAYOUT"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors flex items-center gap-1.5 text-xs font-semibold border border-gray-200/60 dark:border-gray-700/60"
+          title="Ver projeto no GitHub"
+        >
+          <Github className="w-4 h-4" />
+          <span className="hidden md:inline">GitHub</span>
+        </a>
+
         <button
           onClick={onReset}
           className="px-2.5 py-1.5 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
