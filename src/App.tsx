@@ -137,7 +137,7 @@ export default function App() {
           {/* Printable A4 Sheet Preview */}
           <div
             style={{ transform: `scale(${zoomLevel / 100})`, transformOrigin: 'top center' }}
-            className="transition-transform duration-150"
+            className="sheet-zoom-wrapper transition-transform duration-150"
           >
             <PrintableSheet
               customization={customization}

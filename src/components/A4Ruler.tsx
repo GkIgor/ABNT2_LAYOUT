@@ -12,40 +12,56 @@ export const A4Ruler: React.FC = () => {
         </span>
       </div>
       
-      {/* 100mm physical width ruler */}
+      {/* 100mm physical width ruler container */}
       <div 
-        style={{ width: '100mm' }} 
-        className="h-6 border-l-2 border-r-2 border-gray-900 dark:border-gray-100 relative bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-end overflow-hidden rounded-xs"
+        style={{ width: '100mm', height: '24px' }} 
+        className="relative bg-gray-50 dark:bg-gray-800/50 border border-gray-400 dark:border-gray-600 rounded-xs overflow-hidden"
       >
-        {/* Millimeter ticks */}
-        <div className="absolute inset-0 flex justify-between items-end">
-          {Array.from({ length: 11 }).map((_, cmIndex) => (
-            <div key={cmIndex} className="relative flex flex-col items-center">
-              {/* CM Tick */}
-              <div className="w-[1.5px] h-3.5 bg-gray-900 dark:bg-gray-100" />
-              <span className="text-[8px] font-bold mt-0.5 leading-none text-gray-800 dark:text-gray-200">
-                {cmIndex}
-              </span>
-              
-              {/* Half CM & MM sub-ticks if not last */}
-              {cmIndex < 10 && (
-                <div className="absolute left-[10mm] top-0 -translate-x-[10mm] w-[10mm] h-full flex justify-between items-end pointer-events-none">
-                  {Array.from({ length: 9 }).map((_, mmIndex) => {
-                    const isMid = mmIndex === 4;
-                    return (
-                      <div
-                        key={mmIndex}
-                        style={{ height: isMid ? '8px' : '4px' }}
-                        className={`w-[1px] ${isMid ? 'bg-gray-700 dark:bg-gray-300' : 'bg-gray-400 dark:bg-gray-600'}`}
-                      />
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        {/* Render 0 to 100mm ticks */}
+        {Array.from({ length: 101 }).map((_, mm) => {
+          const isCm = mm % 10 === 0;
+          const isHalfCm = mm % 5 === 0 && !isCm;
+
+          if (isCm) {
+            const cmVal = mm / 10;
+            return (
+              <React.Fragment key={mm}>
+                {/* CM Line */}
+                <div
+                  style={{ left: `${mm}mm` }}
+                  className="absolute top-0 w-[1.5px] h-3.5 bg-gray-900 dark:bg-gray-100 -translate-x-1/2"
+                />
+                {/* CM Label */}
+                <span
+                  style={{ left: `${mm}mm` }}
+                  className="absolute bottom-0.5 text-[8px] font-bold leading-none text-gray-900 dark:text-gray-100 -translate-x-1/2"
+                >
+                  {cmVal}
+                </span>
+              </React.Fragment>
+            );
+          }
+
+          if (isHalfCm) {
+            return (
+              <div
+                key={mm}
+                style={{ left: `${mm}mm` }}
+                className="absolute top-0 w-[1px] h-2.5 bg-gray-700 dark:bg-gray-300 -translate-x-1/2"
+              />
+            );
+          }
+
+          return (
+            <div
+              key={mm}
+              style={{ left: `${mm}mm` }}
+              className="absolute top-0 w-[1px] h-1.5 bg-gray-400 dark:bg-gray-600 -translate-x-1/2"
+            />
+          );
+        })}
       </div>
     </div>
   );
 };
+
