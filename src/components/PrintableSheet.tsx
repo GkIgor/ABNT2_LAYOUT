@@ -207,6 +207,7 @@ export const PrintableSheet: React.FC<PrintableSheetProps> = ({
             <div className="space-y-4">
               <div
                 style={{
+                  zoom: scaleFactor < 1 ? scaleFactor : undefined,
                   transform: scaleFactor < 1 ? `scale(${scaleFactor})` : undefined,
                   transformOrigin: 'top left',
                   width: scaleFactor < 1 ? `${(100 / scaleFactor).toFixed(1)}%` : '100%',

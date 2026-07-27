@@ -12,42 +12,30 @@
     color-adjust: exact !important;
   }
 
-  /* Reset body and outer containers without forcing display: block on children */
-  html, body, #root {
+  /* Reset body and wrapper layout containers so they never clip or add top margin */
+  html, body, #root, .min-h-screen, main, .sheet-scroll-container, .sheet-zoom-wrapper, .print-sheet-wrapper {
     background: #ffffff !important;
     color: #000000 !important;
     margin: 0 !important;
     padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
     width: 100% !important;
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
     overflow: visible !important;
+    transform: none !important;
+    flex: none !important;
+    position: static !important;
   }
 
   /* Hide screen-only controls, headers, drawers, sidebars, modals */
-  .no-print, header, aside, modal, nav {
+  .no-print, header, aside, modal, nav, button {
     display: none !important;
   }
 
-  /* Reset zoom wrapper for print engine */
-  .sheet-zoom-wrapper {
-    transform: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-  }
-
-  /* Print container resets */
-  .print-sheet-wrapper {
-    padding: 0 !important;
-    margin: 0 auto !important;
-    background: #ffffff !important;
-    width: 100% !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
-
+  /* Print sheet container resets */
   .print-sheet {
     box-shadow: none !important;
     border: none !important;
@@ -55,8 +43,11 @@
     padding: 8mm !important;
     border-radius: 0 !important;
     background: #ffffff !important;
+    min-height: auto !important;
+    max-height: 100vh !important;
     page-break-after: avoid !important;
     page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   /* Prevent individual keycaps from breaking across page breaks */

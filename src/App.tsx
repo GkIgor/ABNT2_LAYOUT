@@ -80,7 +80,7 @@ export default function App() {
         />
 
         {/* Right Preview Canvas Area */}
-        <main className="flex-1 bg-gray-200/80 dark:bg-gray-900/80 flex flex-col items-center justify-start overflow-auto p-4 sm:p-6 relative">
+        <main className="sheet-scroll-container flex-1 bg-gray-200/80 dark:bg-gray-900/80 flex flex-col items-center justify-start overflow-auto p-4 sm:p-6 relative">
           
           {/* Zoom & Quick Toolbar Floating Controls */}
           <div className="no-print sticky top-2 z-30 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 flex items-center gap-4 mb-4">
