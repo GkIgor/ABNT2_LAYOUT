@@ -1,0 +1,6 @@
+{
+  "name": "Teclado ABNT2 Imprimível A4",
+  "description": "Gerador e editor de layout de teclado ABNT 2 otimizado para impressão A4 com guias de corte para substituição de teclas de notebooks e desktops.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
