@@ -11,7 +11,12 @@
     margin: 0;
   }
 
-  /* Force background colors and exact colors in print output */
+  /* Force background colors and exact colors across all elements */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   html, body {
     background: #ffffff !important;
     color: #000000 !important;
@@ -19,11 +24,10 @@
     padding: 0 !important;
     width: 210mm !important;
     height: 297mm !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    overflow: visible !important;
   }
 
-  /* Hide screen-only controls, headers, drawers, sidebars */
+  /* Hide screen-only controls, headers, drawers, sidebars, modals */
   .no-print {
     display: none !important;
   }
@@ -35,6 +39,7 @@
     background: transparent !important;
     box-shadow: none !important;
     width: 210mm !important;
+    overflow: visible !important;
   }
 
   .print-sheet {
@@ -49,4 +54,11 @@
     page-break-after: avoid !important;
     page-break-inside: avoid !important;
   }
+
+  /* Prevent keycaps from breaking across pages */
+  [title*="Tecla:"] {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
 }
+
